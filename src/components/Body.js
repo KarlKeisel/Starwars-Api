@@ -2,6 +2,7 @@
 import React from 'react'
 import NavButton from './links/NavButton'
 import starwarsData from '../data/starwarsData'
+import apiCaller from '../data/apiCaller'
 
 class Body extends React.Component {
     constructor(props) {
@@ -18,10 +19,9 @@ class Body extends React.Component {
     handleClick(item) {
         this.setState({
             apiCurrent: item.apiLink,
-            apiSection: item.title
+            apiSection: item.title,
         });
-        // setState apiCurrent to apiLink on button.
-        // setState apiSection to title on button. (Used for highlighting the button: className)
+        fetch(item.apiLink).then(response => response.json()).then(data => this.setState({apiInfo: data})).then(() => console.log(this.state.apiInfo))
         // check with apiStorage to see if that url is already saved into object: If so, return that object as apiInfo state
         // use apiCaller to make call to swapi to grab the list for that section and return as state for apiInfo
     };

@@ -59,10 +59,11 @@ body a:visited {
 
 .body {
   background-color: #282c34;
+  min-height: 80vh;
 }
 
-.selected-section {
-
+.intro {
+  padding-top: 10px;
 }
 
 /* API Form */
@@ -74,5 +75,13 @@ body a:visited {
 footer {
   display: flex;
   padding: 14px;
-  justify-content: center;
+  background-color: #343a40;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.foot-link {
+  text-align: center;
 }
