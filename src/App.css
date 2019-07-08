@@ -1,3 +1,21 @@
+body {
+  background-color: #282c34;
+  color: #ffffff;
+}
+
+body a {
+  color: #cccccc
+}
+
+body a:hover {
+  text-decoration-style: solid;
+  color: #cccccc;
+}
+
+body a:visited {
+  color: #666666
+}
+
 /* Header */
 
 .App-logo {
@@ -9,7 +27,6 @@
 }
 
 .App-header {
-  background-color: #282c34;
   min-height: 10vh;
   display: flex;
   align-items: center;
@@ -44,8 +61,18 @@
   background-color: #282c34;
 }
 
+.selected-section {
+
+}
+
 /* API Form */
 
 /* Display Form */
 
 /* Footer */
+
+footer {
+  display: flex;
+  padding: 14px;
+  justify-content: center;
+}

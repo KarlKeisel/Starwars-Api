@@ -11,26 +11,35 @@ class Body extends React.Component {
             apiCurrent: '',
             apiInfo: {},
             apiLinks: {},
-        }
+        };
+        this.handleClick = this.handleClick.bind(this)
     }
 
-    handleClick = (link) => e => {
-        console.log(e);
-        console.log(link)
+    handleClick(item) {
+        this.setState({
+            apiCurrent: item.apiLink,
+            apiSection: item.title
+        });
+        // setState apiCurrent to apiLink on button.
+        // setState apiSection to title on button. (Used for highlighting the button: className)
+        // check with apiStorage to see if that url is already saved into object: If so, return that object as apiInfo state
+        // use apiCaller to make call to swapi to grab the list for that section and return as state for apiInfo
     };
 
 
     render() {
-        const NavButtons = starwarsData.map(item =>  <NavButton key={item} item={item} handleClick={this.handleClick} />);
-        const What = starwarsData.map(item => console.log(item));
-        // TODO Figure out what is being passed, seems like correct # of objects.
-
+        const NavButtons = starwarsData.map(item => <NavButton key={item.title} item={item}
+                                                               section={this.state.apiSection}
+                                                               handleClick={this.handleClick}/>);
+        const ApiLink = this.state.apiSection === '' ?
+            <h2 className="intro">Welcome to my Starwars API Lookup! Press any of the menu buttons to begin!</h2> : '';
 
         return (
             <div className='body container-fluid'>
                 <div className='row'>
                     {NavButtons}
                 </div>
+                <div>{ApiLink}</div>
             </div>
         )
     }
