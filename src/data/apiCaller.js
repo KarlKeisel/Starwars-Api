@@ -1,5 +1,6 @@
 // Will accept a url and return a json object.
 // Show a loading image while it is working. (Separate file?)
+// TODO Is this needed?
 
 function apiCaller(url) {
     fetch(url).then(function(response) {
@@ -10,4 +11,4 @@ function apiCaller(url) {
     })
 }
 
-export default apiCaller()
+export default apiCaller

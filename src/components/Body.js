@@ -2,7 +2,7 @@
 import React from 'react'
 import NavButton from './links/NavButton'
 import starwarsData from '../data/starwarsData'
-import apiCaller from '../data/apiCaller'
+import SelectorForm from './forms/SelectorForm'
 
 class Body extends React.Component {
     constructor(props) {
@@ -11,7 +11,9 @@ class Body extends React.Component {
             apiSection: '',
             apiCurrent: '',
             apiInfo: {},
-            apiLinks: {},
+            // apiLinks: {},
+            // TODO Add links to the api links within the apiInfo to jump around easier
+            // TODO Add some sort of 'Breadcrumbs' or 'Back' feature
         };
         this.handleClick = this.handleClick.bind(this)
     }
@@ -21,9 +23,11 @@ class Body extends React.Component {
             apiCurrent: item.apiLink,
             apiSection: item.title,
         });
-        fetch(item.apiLink).then(response => response.json()).then(data => this.setState({apiInfo: data})).then(() => console.log(this.state.apiInfo))
-        // check with apiStorage to see if that url is already saved into object: If so, return that object as apiInfo state
-        // use apiCaller to make call to swapi to grab the list for that section and return as state for apiInfo
+        // TODO Incorporate a loading image of some sort.
+        // TODO check with apiStorage to see if that url is already saved into object: If so, return that object as apiInfo state
+        fetch(item.apiLink)
+            .then(response => response.json())
+            .then(data => this.setState({apiInfo: data}))
     };
 
 
@@ -40,6 +44,7 @@ class Body extends React.Component {
                     {NavButtons}
                 </div>
                 <div>{ApiLink}</div>
+                <SelectorForm apiInfo={this.state.apiInfo} apiCurrent={this.state.apiCurrent}/>
             </div>
         )
     }

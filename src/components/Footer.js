@@ -1,6 +1,3 @@
-// Used to give credit to "https://swapi.co/api/"
-// TODO provide Github link and credit for swapi.co
-
 import React from 'react'
 
 function Footer() {
