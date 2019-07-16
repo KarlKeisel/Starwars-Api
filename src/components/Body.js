@@ -15,7 +15,9 @@ class Body extends React.Component {
             // TODO Add links to the api links within the apiInfo to jump around easier
             // TODO Add some sort of 'Breadcrumbs' or 'Back' feature
         };
-        this.handleClick = this.handleClick.bind(this)
+        this.handleClick = this.handleClick.bind(this);  // For NavButtons
+        this.handleNameSelection = this.handleNameSelection.bind(this);  // For SelectorForm
+        this.handlePageSelection = this.handlePageSelection.bind(this);  // For Paginator
     }
 
     handleClick(item) {
@@ -28,7 +30,22 @@ class Body extends React.Component {
         fetch(item.apiLink)
             .then(response => response.json())
             .then(data => this.setState({apiInfo: data}))
+        // TODO Separate this into apiCaller file to make easier to use!
     };
+
+    handleNameSelection(name) {
+        this.setState({})
+        // Two way to do this. create a new object that displays only the 'results' object:
+        // Other: Use url to make another API call.
+        // Take 'name'/'title' that was selected and send full object to DisplayForm for display.
+    };
+
+    handlePageSelection(item) {  // TODO look at refactoring with handleClick?
+        this.setState({apiSection: item.apiLink});
+        fetch(item.apiLink)
+            .then(response => response.json())
+            .then(data => this.setState({apiInfo: data}))
+    }
 
 
     render() {
@@ -44,7 +61,11 @@ class Body extends React.Component {
                     {NavButtons}
                 </div>
                 <div>{ApiLink}</div>
-                <SelectorForm apiInfo={this.state.apiInfo} apiCurrent={this.state.apiCurrent}/>
+                <SelectorForm apiInfo={this.state.apiInfo}
+                              apiCurrent={this.state.apiCurrent}
+                              handleNameSelection={this.handleNameSelection}
+                              handlePageSelection={this.handlePageSelection}  // To Paginator
+                />
             </div>
         )
     }
