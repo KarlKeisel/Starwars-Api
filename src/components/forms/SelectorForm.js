@@ -22,9 +22,14 @@ class SelectorForm extends React.Component {
 
 
     render() {
+        const nameOrTitle = this.props.apiInfo.results[0].hasOwnProperty("name");  // Films labelled by title, not name.
+
+        const nameList = this.props.apiInfo.results.map(item =>
+            <h3 key={item.url}>{nameOrTitle ? item.name : item.title}</h3>);
+
         return (
             <div>
-                <h3>apiInfo is NOT empty</h3>
+                {nameList}
             </div>
         )
     }
