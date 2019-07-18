@@ -24,6 +24,7 @@ class Body extends React.Component {
         this.setState({
             apiCurrent: item.apiLink,
             apiSection: item.title,
+            apiInfo: {},
         });
         // TODO Incorporate a loading image of some sort.
         // TODO check with apiStorage to see if that url is already saved into object: If so, return that object as apiInfo state
@@ -61,15 +62,18 @@ class Body extends React.Component {
                     {NavButtons}
                 </div>
                 <div>{ApiLink}</div>
+                {Object.entries(this.state.apiInfo).length === 0 && this.state.apiInfo.constructor === Object ?
+                <h3>apiInfo is empty</h3> :  // Test if info is empty.
                 <SelectorForm apiInfo={this.state.apiInfo}
-                              apiCurrent={this.state.apiCurrent}
-                              handleNameSelection={this.handleNameSelection}
-                              handlePageSelection={this.handlePageSelection}  // To Paginator
-                />
-            </div>
-        )
-    }
-}
+                                  apiCurrent={this.state.apiCurrent}
+                                  handleNameSelection={this.handleNameSelection}
+                                  handlePageSelection={this.handlePageSelection}  // To Paginator
+                    />}
+
+                    </div>
+                    )
+                }
+                }
 
 
-export default Body
+                export default Body

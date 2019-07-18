@@ -6,20 +6,6 @@
 import React from 'react'
 
 class SelectorForm extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            // this.props.apiInfo
-            // this.props.apiCurrent
-        };
-    }
-
-
-    handleClick(item) {
-        this.setState({
-            apiCurrent: item.apiCurrent,
-        })
-    }
 
     // Will need info to display "results" part of object.
     // Will send page number and count to Paginator.
@@ -38,7 +24,7 @@ class SelectorForm extends React.Component {
     render() {
         return (
             <div>
-
+                <h3>apiInfo is NOT empty</h3>
             </div>
         )
     }
