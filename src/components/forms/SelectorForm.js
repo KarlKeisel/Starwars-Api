@@ -4,6 +4,8 @@
 // TODO Build SelectorForm, import Paginator
 
 import React from 'react'
+import { ListGroup, Pagination, ListGroupItem } from "react-bootstrap"
+import Paginator from './Paginator'
 
 class SelectorForm extends React.Component {
 
@@ -25,11 +27,16 @@ class SelectorForm extends React.Component {
         const nameOrTitle = this.props.apiInfo.results[0].hasOwnProperty("name");  // Films labelled by title, not name.
 
         const nameList = this.props.apiInfo.results.map(item =>
-            <h3 key={item.url}>{nameOrTitle ? item.name : item.title}</h3>);
+            <ListGroupItem action className="drk-selector" key={item.url}>{nameOrTitle ? item.name : item.title}</ListGroupItem>);
+
+        // const nameList = this.props.apiInfo.results.map(item => <p key={item.url}>{nameOrTitle ? item.name : item.title}</p>)
 
         return (
             <div>
+                <ListGroup className="left-side">
                 {nameList}
+                </ListGroup>
+                <Paginator />
             </div>
         )
     }

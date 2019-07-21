@@ -57,23 +57,24 @@ class Body extends React.Component {
             <h2 className="intro">Welcome to my Starwars API Lookup! Press any of the menu buttons to begin!</h2> : '';
 
         return (
-            <div className='body container-fluid'>
+            <div className='body container-fluid pl-0'>
                 <div className='row'>
                     {NavButtons}
                 </div>
                 <div>{ApiLink}</div>
                 {Object.entries(this.state.apiInfo).length === 0 && this.state.apiInfo.constructor === Object ?
-                <h3>apiInfo is empty</h3> :  // Test if info is empty.
-                <SelectorForm apiInfo={this.state.apiInfo}
-                                  apiCurrent={this.state.apiCurrent}
-                                  handleNameSelection={this.handleNameSelection}
-                                  handlePageSelection={this.handlePageSelection}  // To Paginator
+                    <h3 className="pl-2">apiInfo is empty</h3> :  // Test if info is empty.
+                    <SelectorForm
+                        apiInfo={this.state.apiInfo}
+                        apiCurrent={this.state.apiCurrent}
+                        handleNameSelection={this.handleNameSelection}
+                        handlePageSelection={this.handlePageSelection}  // To Paginator
                     />}
 
-                    </div>
-                    )
-                }
-                }
+            </div>
+        )
+    }
+}
 
 
-                export default Body
+export default Body
