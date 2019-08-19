@@ -3,6 +3,7 @@ import React from 'react'
 import NavButton from './links/NavButton'
 import starwarsData from '../data/starwarsData'
 import SelectorForm from './forms/SelectorForm'
+import DisplayForm from './forms/DisplayForm'
 
 class Body extends React.Component {
     constructor(props) {
@@ -11,12 +12,11 @@ class Body extends React.Component {
             apiSection: '',
             apiCurrent: '',
             apiInfo: {},
-            // apiLinks: {},
-            // TODO Add links to the api links within the apiInfo to jump around easier
+            selectedItem: {},
             // TODO Add some sort of 'Breadcrumbs' or 'Back' feature
         };
         this.handleClick = this.handleClick.bind(this);  // For NavButtons
-        this.handleNameSelection = this.handleNameSelection.bind(this);  // For SelectorForm
+        this.handleItemSelection = this.handleItemSelection.bind(this);  // For SelectorForm and DisplayForm
         this.handlePageSelection = this.handlePageSelection.bind(this);  // For Paginator
     }
 
@@ -34,18 +34,26 @@ class Body extends React.Component {
         // TODO Separate this into apiCaller file to make easier to use!
     };
 
-    handleNameSelection(name) {
-        this.setState({})
-        // Two way to do this. create a new object that displays only the 'results' object:
-        // Other: Use url to make another API call.
-        // Take 'name'/'title' that was selected and send full object to DisplayForm for display.
+    handleItemSelection(item, url) {
+        this.setState({selectedItem: {}});
+        // If url: then make api call, setState to results. If not, then setState to item.
+        if (url === true) {
+            fetch(item)  // Item is a url
+                .then(response => response.json())
+                .then(data => this.setState({selectedItem: data}))
+        } else {  // Item is already an object
+            this.setState({selectedItem: item})
+        }
+
     };
 
     handlePageSelection(item) {  // TODO look at refactoring with handleClick?
-        this.setState({apiSection: item.apiLink});
-        fetch(item.apiLink)
-            .then(response => response.json())
-            .then(data => this.setState({apiInfo: data}))
+        if (item !== null) {
+            this.setState({apiSection: item});
+            fetch(item)
+                .then(response => response.json())
+                .then(data => this.setState({apiInfo: data}))
+        }
     }
 
 
@@ -64,11 +72,19 @@ class Body extends React.Component {
                 <div>{ApiLink}</div>
                 {Object.entries(this.state.apiInfo).length === 0 && this.state.apiInfo.constructor === Object ?
                     <h3 className="pl-2">apiInfo is empty</h3> :  // Test if info is empty.
+                    // TODO Remove empty string ^
                     <SelectorForm
                         apiInfo={this.state.apiInfo}
                         apiCurrent={this.state.apiCurrent}
-                        handleNameSelection={this.handleNameSelection}
+                        handleItemSelection={this.handleItemSelection}
                         handlePageSelection={this.handlePageSelection}  // To Paginator
+                    />}
+                {Object.entries(this.state.selectedItem).length === 0 && this.state.selectedItem.constructor === Object ?
+                    <h3 className={"float-right"}>selectedItem is empty</h3> : // Test if item is empty.
+                    // TODO Remove empty string     ^
+                    <DisplayForm
+                        item={this.state.selectedItem}
+                        handleItemSelection={this.handleItemSelection}
                     />}
 
             </div>

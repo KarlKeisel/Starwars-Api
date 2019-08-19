@@ -9,34 +9,33 @@ import Paginator from './Paginator'
 
 class SelectorForm extends React.Component {
 
-    // Will need info to display "results" part of object.
-    // Will send page number and count to Paginator.
-    // Will need to .keys() to see if "results" contains the 'title' key. (films only)
-    // Iterate through each object and pull names/titles
-    // Bootstrap ListGroup ***
-    // This object needs to display names/titles as a list. With Paginator next to it.
-    // Object must be able to change the 'apiCurrent' state to whichever person is selected.
-    // Object must then disappear to make room for DisplayForm.
-    // Paginator object must also be able to modify state.
-    // Object does not need to change button colors, as it only selects from within the section.
-
     // EXTRA: Make object slide in when first created, and slide out when unmounted. (CSS?)
+    // TODO Style SelectorForm better! (Slide in and out, mouse over graphics, selector graphics)
 
 
     render() {
         const nameOrTitle = this.props.apiInfo.results[0].hasOwnProperty("name");  // Films labelled by title, not name.
 
         const nameList = this.props.apiInfo.results.map(item =>
-            <ListGroupItem action className="drk-selector" key={item.url}>{nameOrTitle ? item.name : item.title}</ListGroupItem>);
-
-        // const nameList = this.props.apiInfo.results.map(item => <p key={item.url}>{nameOrTitle ? item.name : item.title}</p>)
+            <ListGroupItem
+                action onClick={() => this.props.handleItemSelection(item, false)}
+                className="drk-selector"
+                key={item.url}
+            >{nameOrTitle ? item.name : item.title}
+            </ListGroupItem>);
 
         return (
-            <div>
-                <ListGroup className="left-side">
+            <div className={`container-fluid left-side`}>
+                <div className="row">
+                <ListGroup className="col-12">
                 {nameList}
                 </ListGroup>
-                <Paginator />
+                <Paginator
+                    className={`col-12`}  // TODO Fix so paginator is stretched or right aligned!
+                    apiInfo={this.props.apiInfo}  // Has count and page numbers
+                    handlePageSelection={this.props.handlePageSelection}
+                />
+                </div>
             </div>
         )
     }

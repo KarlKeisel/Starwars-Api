@@ -74,13 +74,20 @@ body a:visited {
 }
 
 .drk-selector:hover {
-  background-color: #282c34;
+  background-color: #404e56;
   color: #cccccc;
 }
 
 .left-side {
   margin-left: 0;
   max-width: 30vw;
+}
+
+/* Paginator */
+
+.paginator {
+  text-align: center;
+  min-width: 100%;
 }
 
 /* Display Form */
