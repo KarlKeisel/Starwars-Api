@@ -2,9 +2,9 @@ import React from 'react'
 
 function NavButton(props) {
 
-        let button = props.item.title === props.section ?
-            'btn-light' :
-            'btn-dark';
+    let button = props.item.title === props.section ?
+        'btn-light' :
+        'btn-dark';
 
     return (
         <button onClick={() => props.handleClick(props.item)} className={'btn ' + button + ' col-lg-2 col-sm-4'}>

@@ -1,10 +1,10 @@
 // Will be used to select which piece of the API that will be displayed
 // Takes count and "name" object from "results" object (or "title" if it is the "films" section)
 // Will return a Paginator object (Even if one page) and will return a selectable list of the names.
-// TODO Build SelectorForm, import Paginator
+// TODO Build SelectorForm
 
 import React from 'react'
-import { ListGroup, Pagination, ListGroupItem } from "react-bootstrap"
+import { ListGroup, ListGroupItem } from "react-bootstrap"
 import Paginator from './Paginator'
 
 class SelectorForm extends React.Component {

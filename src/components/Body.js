@@ -70,22 +70,28 @@ class Body extends React.Component {
                     {NavButtons}
                 </div>
                 <div>{ApiLink}</div>
-                {Object.entries(this.state.apiInfo).length === 0 && this.state.apiInfo.constructor === Object ?
-                    <h3 className="pl-2">apiInfo is empty</h3> :  // Test if info is empty.
-                    // TODO Remove empty string ^
-                    <SelectorForm
-                        apiInfo={this.state.apiInfo}
-                        apiCurrent={this.state.apiCurrent}
-                        handleItemSelection={this.handleItemSelection}
-                        handlePageSelection={this.handlePageSelection}  // To Paginator
-                    />}
-                {Object.entries(this.state.selectedItem).length === 0 && this.state.selectedItem.constructor === Object ?
-                    <h3 className={"float-right"}>selectedItem is empty</h3> : // Test if item is empty.
-                    // TODO Remove empty string     ^
-                    <DisplayForm
-                        item={this.state.selectedItem}
-                        handleItemSelection={this.handleItemSelection}
-                    />}
+                <div className='row'>
+                    <div className='col-lg-4'>
+                        {Object.entries(this.state.apiInfo).length === 0 && this.state.apiInfo.constructor === Object ?
+                            <h3 className="pl-2">apiInfo is empty</h3> :  // Test if info is empty.
+                            // TODO Remove empty string ^
+                            <SelectorForm
+                                apiInfo={this.state.apiInfo}
+                                apiCurrent={this.state.apiCurrent}
+                                handleItemSelection={this.handleItemSelection}
+                                handlePageSelection={this.handlePageSelection}  // To Paginator
+                            />}
+                    </div>
+                    <div className='col-lg-8'>
+                        {Object.entries(this.state.selectedItem).length === 0 && this.state.selectedItem.constructor === Object ?
+                            <h3 className={"float-right"}>selectedItem is empty</h3> : // Test if item is empty.
+                            // TODO Remove empty string     ^
+                            <DisplayForm
+                                item={this.state.selectedItem}
+                                handleItemSelection={this.handleItemSelection}
+                            />}
+                    </div>
+                </div>
 
             </div>
         )

@@ -10,11 +10,15 @@ function DisplayForm(props) {
     // Will need to 'rate' each item in importance to better style the items. (DisplayField?)
     // If item is an object, will need to iterate through them and put in a list.
     // If item is an url, must put an 'onClick' to allow travel between links.
-
-    // Style: Must be side by side with SelectorForm (Handled in Body.js ?)
+    const keys = Object.keys(props.item);
+    const keysList = keys.map(data => <p key={data}>{data.toUpperCase()}: {props.item[data]}</p>);
 
     return (
-        <h3>{props.item.name}</h3>
+        <div>
+            <h3>{props.item.name}</h3>
+            {keysList}
+        </div>
     )
 }
+
 export default DisplayForm
