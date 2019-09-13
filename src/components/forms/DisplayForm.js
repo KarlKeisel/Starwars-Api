@@ -3,6 +3,7 @@
 // TODO Style DisplayForm
 
 import React from 'react'
+import DisplayField from './DisplayField'
 
 function DisplayForm(props) {
 
@@ -11,12 +12,22 @@ function DisplayForm(props) {
     // If item is an object, will need to iterate through them and put in a list.
     // If item is an url, must put an 'onClick' to allow travel between links.
     const keys = Object.keys(props.item);
-    const keysList = keys.map(data => <p key={data}>{data.toUpperCase()}: {props.item[data]}</p>);
+    const keysList = keys.map(data =>
+        <DisplayField
+        key={data}
+        title={data}
+        info={props.item[data]}
+        handleItemSelection={props.handleItemSelection}
+        />);
 
     return (
         <div>
-            <h3>{props.item.name}</h3>
+            <h3>{props.item.name}</h3>  {/* Object either has name or title. */}
+            <h3>{props.item.title}</h3>
+            <br />
+            <div className='row'>
             {keysList}
+            </div>
         </div>
     )
 }

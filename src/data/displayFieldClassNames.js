@@ -1,16 +1,16 @@
 // Will look at the key for the DisplayField and return classNames for the object.
 // If no match, then DisplayField will populate with 'medium' importance classNames.
 
-const large = "large, col-12";
-const largeThin = "large, col-lg-6";
-const mediumLong = "medium, col-12";
-const medium = "medium, col-lg-4, col-md-6";
-const smallLong = "small, col-12";
-const small = "small, col-md-6";
+const large = "large col-12";
+const largeThin = "large col-lg-6";
+const mediumLong = "medium col-12";
+const medium = "medium col-lg-4 col-md-6";
+const smallLong = "small col-12";
+const small = "small col-md-6";
 
 // All possible combinations of keys that the SWApi uses. Will help in styling.
 const keyMatcher = {
-    "name": large,
+    "name": `${large} title d-none`,  // Using h3 tag, keeping for clarity.
     "height": medium,
     "mass": medium,
     "hair_color": medium,
@@ -32,9 +32,9 @@ const keyMatcher = {
     "surface_water": medium,
     "population": medium,
     "residents": large,
-    "title": large,
+    "title": `${large} title d-none`,  // Using h3 tag, keeping for clarity.
     "episode_id": smallLong,
-    "opening_crawl": `crawl, ${large}`, // Will need to scroll or be careful about size.
+    "opening_crawl": `${large} crawl`, // Will need to scroll or be careful about size.
     "director": medium,
     "producer": medium,
     "release_date": medium,
@@ -65,7 +65,7 @@ const keyMatcher = {
     "starship_class": medium,
     "created": small,
     "edited": small,
-    "url": `url, ${mediumLong}`,
+    "url": `${mediumLong} url`,
 };
 
 export {large, largeThin, mediumLong, medium, small, smallLong, keyMatcher}

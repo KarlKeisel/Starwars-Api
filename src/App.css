@@ -90,6 +90,34 @@ body a:visited {
 
 /* Display Form */
 
+.large {
+    font-size: large;
+}
+
+.medium {
+    font-size: medium;
+}
+
+.small {
+    font-size: small;
+}
+
+.title {
+    font-size: 2.25rem;
+}
+
+.crawl {
+    font-size: small;
+}
+
+.url {
+
+}
+
+.hidden {
+    visibility: hidden;
+}
+
 /* Footer */
 
 footer {
