@@ -7,7 +7,7 @@ function Header() {
         <header className='App-header'>
             <img src={logo} className="App-logo" alt="logo"/>
             <h1 className='brand'>
-                Karl's Starwars API Reader
+                Karl's Star Wars API Reader
             </h1>
         </header>
     )

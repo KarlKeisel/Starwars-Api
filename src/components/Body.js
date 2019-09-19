@@ -62,7 +62,7 @@ class Body extends React.Component {
                                                                section={this.state.apiSection}
                                                                handleClick={this.handleClick}/>);
         const ApiLink = this.state.apiSection === '' ?
-            <h2 className="intro">Welcome to my Starwars API Lookup! Press any of the menu buttons to begin!</h2> : '';
+            <h2 className="intro">Welcome to my Star Wars API Lookup! Press any of the menu buttons to begin!</h2> : '';
 
         return (
             <div className='body container-fluid pl-0'>
