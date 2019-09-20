@@ -111,8 +111,9 @@ body a:visited {
 }
 
 .url {
-
+  cursor: pointer;
 }
+
 
 .hidden {
     visibility: hidden;

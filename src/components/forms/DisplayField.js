@@ -9,35 +9,53 @@ import React from 'react'
 
 function DisplayField(props) {
 
-    function isInfoURL() {  // Checks to see if the item is a url link to provide onClick.
-        const isUrl = props.info.slice(0,5);
-        return (isUrl === 'https') ?
-            'text-warning' :
-            ''
-    }  // TODO Change to onClick effect
+    function isInfoURL(item) {  // Checks to see if the item is a url link to provide onClick.
+        const isUrl = item.slice(0, 5);
+        return (isUrl === 'https')
+    }
 
     function infoSorter() {
         return Array.isArray(props.info) ?
-            props.info.forEach(function (info, index) {
-                return 'array';  // TODO Fix me! Does not return array items.
-            }) :
-            <span className={isInfoURL()}>{props.info}</span>;
+            props.info.length === 0 ?
+                <ul>
+                    <li>None</li>
+                </ul>
+                :
+                <ul>
+                    {props.info.map((item) => {
+                        return <li key={item}
+                                   onClick={isInfoURL ? () => props.handleItemSelection(item, true) : undefined}
+                                   className={isInfoURL ? 'url' : undefined}
+                        >
+                            {item}
+                        </li>
+                    })}
+                </ul>
+            :
+            <span onClick={isInfoURL ? () => props.handleItemSelection(props.info, true) : undefined}>
+                {props.info}
+            </span>;
     }
 
-    // Check for list first, will need to organize data.
-    // Check for url next, will need to assign 'onClick' to each of them.
-    // handleItemSelection(info, true);
+    // Is item an array AND length > 0? Populate as a <ul>
+    // Is item an array with length = 0? Populate with 'None'
+    // Is the text an url? Add onClick to each url.
+    // onClick = {true ? () => props.handleItemSelection(item, true) : undefined}
+
 
     function classNameMaker(key) {
         return keyMatcher[key];
     }
 
     return (
-            <p className={classNameMaker(props.title)}>
+        <div className={classNameMaker(props.title)}>
+            <p>
                 {props.title.charAt(0).toUpperCase() + props.title.substring(1).toLowerCase()} :
-                <br />
-                {infoSorter()}
+                <br/>
+
             </p>
+            {infoSorter()}
+        </div>
     )
 
 }
