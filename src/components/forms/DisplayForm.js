@@ -25,7 +25,7 @@ function DisplayForm(props) {
             <h3>{props.item.name}</h3>  {/* Object either has name or title. */}
             <h3>{props.item.title}</h3>
             <br />
-            <div className='row'>
+            <div className='row pr-3'>
             {keysList}
             </div>
         </div>

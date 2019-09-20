@@ -5,6 +5,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/forms/DisplayField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/forms/DisplayField.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/forms/DisplayForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/forms/DisplayForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/displayFieldClassNames.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/displayFieldClassNames.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -101,7 +103,7 @@
       <workItem from="1568251962911" duration="94000" />
       <workItem from="1568252835709" duration="306000" />
       <workItem from="1568315830460" duration="9468000" />
-      <workItem from="1568911247286" duration="5561000" />
+      <workItem from="1568911247286" duration="8328000" />
     </task>
     <servers />
   </component>

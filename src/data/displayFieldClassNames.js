@@ -58,14 +58,14 @@ const keyMatcher = {
     "passengers": medium,
     "cargo_capacity": medium,
     "consumables": medium,
-    "vehicle_class": medium,
+    "vehicle_class": mediumLong,
     "pilots": large,
     "hyperdrive_rating": medium,
     "MGLT": medium,
-    "starship_class": medium,
+    "starship_class": mediumLong,
     "created": small,
     "edited": small,
-    "url": `${mediumLong} url`,
+    "url": mediumLong,
 };
 
 export {large, largeThin, mediumLong, medium, small, smallLong, keyMatcher}

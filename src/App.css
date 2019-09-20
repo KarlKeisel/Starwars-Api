@@ -90,6 +90,11 @@ body a:visited {
 
 /* Display Form */
 
+ul {
+  column-count: 2;
+  column-gap: 40px;
+}
+
 .large {
     font-size: large;
 }
