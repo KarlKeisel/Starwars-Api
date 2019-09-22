@@ -1,6 +1,4 @@
 // Will display the info that is pulled from API
-// TODO Build DisplayForm
-// TODO Style DisplayForm
 
 import React from 'react'
 import DisplayField from './DisplayField'
@@ -21,7 +19,7 @@ function DisplayForm(props) {
         />);
 
     return (
-        <div>
+        <div className='fade-in display-form'>
             <h3>{props.item.name}</h3>  {/* Object either has name or title. */}
             <h3>{props.item.title}</h3>
             <br />

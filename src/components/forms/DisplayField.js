@@ -4,30 +4,31 @@ import React from 'react'
 function DisplayField(props) {
 
     function isInfoURL(item) {  // Checks to see if the item is a url link to provide onClick.
+        if (item.length > 0) {  // Needed to prevent crash on non defined item.
         const isUrl = item.slice(0, 5);
-        return (isUrl === 'https')
+        return (isUrl === 'https') }
     }
 
     function infoSorter() {
         return Array.isArray(props.info) ?
             props.info.length === 0 ?
-                <ul className='col-6'>
+                <ul className='col-10'>
                     <li>None</li>
                 </ul>
                 :
                 <ul className='col-10'>
                     {props.info.map((item) => {
                         return <li key={item}
-                                   onClick={isInfoURL ? () => props.handleItemSelection(item, true) : undefined}
-                                   className={isInfoURL ? 'url' : undefined}
+                                   onClick={isInfoURL(item) ? () => props.handleItemSelection(item, true) : undefined}
+                                   className={isInfoURL(item) ? 'url' : undefined}
                         >
                             {item}
                         </li>
                     })}
                 </ul>
             :
-            <span onClick={isInfoURL ? () => props.handleItemSelection(props.info, true) : undefined}
-                  className={isInfoURL ? 'url' : undefined}
+            <span onClick={isInfoURL(props.info) ? () => props.handleItemSelection(props.info, true) : undefined}
+                  className={`${isInfoURL(props.info) ? 'url' : undefined} info pl-3`}
             >
                 {props.info}
             </span>;
@@ -40,7 +41,7 @@ function DisplayField(props) {
     return (
         <div className={classNameMaker(props.title)}>
             <div className='row'>
-                <p className='col'>
+                <p className='col list-item'>
                     {props.title.charAt(0).toUpperCase() + props.title.substring(1).toLowerCase()} :
                 </p>
                 {infoSorter()}

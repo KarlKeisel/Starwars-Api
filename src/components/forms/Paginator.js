@@ -1,5 +1,3 @@
-// TODO Style Paginator
-
 import React from 'react'
 
 class Paginator extends React.Component {
@@ -11,18 +9,18 @@ class Paginator extends React.Component {
             Number((this.props.apiInfo.previous).slice(-1)) + 1;
 
         return (
-            <div className='paginator'>
-                <ul className={`pagination`}>
+            <div className='paginator col-12'>
+                <ul className={`pagination justify-content-center pr-5`}>
                     <li className={`page-item page-link 
                     ${this.props.apiInfo.previous === null ? "disabled" : ""}`}
-                    onClick={() => this.props.handlePageSelection(this.props.apiInfo.previous)}
+                        onClick={() => this.props.handlePageSelection(this.props.apiInfo.previous)}
                     >
                         &laquo;
                     </li>
-                    <li className={`page-item page-list`}>Page {page} of {pages}</li>
+                    <li className={`page-item page-list p-3 page-text`}>Page {page} of {pages}</li>
                     <li className={`page-item page-link 
                     ${this.props.apiInfo.next === null ? "disabled" : ""}`}
-                    onClick={() => this.props.handlePageSelection(this.props.apiInfo.next)}
+                        onClick={() => this.props.handlePageSelection(this.props.apiInfo.next)}
                     >
                         &raquo;
                     </li>
@@ -30,7 +28,6 @@ class Paginator extends React.Component {
             </div>
         )
 
-        // TODO Style buttons better. (Color, stretch)
 
     }
 

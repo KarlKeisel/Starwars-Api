@@ -1,4 +1,3 @@
-// Will hold the two forms, one to call info and one to display it.
 import React from 'react'
 import NavButton from './links/NavButton'
 import starwarsData from '../data/starwarsData'
@@ -13,7 +12,6 @@ class Body extends React.Component {
             apiCurrent: '',
             apiInfo: {},
             selectedItem: {},
-            // TODO Add some sort of 'Breadcrumbs' or 'Back' feature
         };
         this.handleClick = this.handleClick.bind(this);  // For NavButtons
         this.handleItemSelection = this.handleItemSelection.bind(this);  // For SelectorForm and DisplayForm
@@ -26,12 +24,9 @@ class Body extends React.Component {
             apiSection: item.title,
             apiInfo: {},
         });
-        // TODO Incorporate a loading image of some sort.
-        // TODO check with apiStorage to see if that url is already saved into object: If so, return that object as apiInfo state
         fetch(item.apiLink)
             .then(response => response.json())
             .then(data => this.setState({apiInfo: data}))
-        // TODO Separate this into apiCaller file to make easier to use!
     };
 
     handleItemSelection(item, url) {
@@ -47,7 +42,7 @@ class Body extends React.Component {
 
     };
 
-    handlePageSelection(item) {  // TODO look at refactoring with handleClick?
+    handlePageSelection(item) {
         if (item !== null) {
             this.setState({apiSection: item});
             fetch(item)
@@ -73,8 +68,7 @@ class Body extends React.Component {
                 <div className='row'>
                     <div className='col-lg-4'>
                         {Object.entries(this.state.apiInfo).length === 0 && this.state.apiInfo.constructor === Object ?
-                            <h3 className="pl-2">apiInfo is empty</h3> :  // Test if info is empty.
-                            // TODO Remove empty string ^
+                            <h3 className="pl-2"> </h3> :  // Test if info is empty. Left for code review.
                             <SelectorForm
                                 apiInfo={this.state.apiInfo}
                                 apiCurrent={this.state.apiCurrent}
@@ -84,8 +78,7 @@ class Body extends React.Component {
                     </div>
                     <div className='col-lg-8'>
                         {Object.entries(this.state.selectedItem).length === 0 && this.state.selectedItem.constructor === Object ?
-                            <h3 className={"float-right"}>selectedItem is empty</h3> : // Test if item is empty.
-                            // TODO Remove empty string     ^
+                            <h3 className={"float-right"}> </h3> : // Test if item is empty. Left for code review.
                             <DisplayForm
                                 item={this.state.selectedItem}
                                 handleItemSelection={this.handleItemSelection}

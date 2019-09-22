@@ -35,9 +35,9 @@ const keyMatcher = {
     "title": `${large} title d-none`,  // Using h3 tag, keeping for clarity.
     "episode_id": smallLong,
     "opening_crawl": `${large} crawl`, // Will need to scroll or be careful about size.
-    "director": medium,
-    "producer": medium,
-    "release_date": medium,
+    "director": mediumLong,
+    "producer": mediumLong,
+    "release_date": mediumLong,
     "characters": large,
     "planets": large,
     "classification": medium,
